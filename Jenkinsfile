@@ -15,16 +15,6 @@ pipeline {
             }
         }
 
-        stage('Stop Existing Application') {
-            steps {
-                script {
-                    bat """
-                    wmic process where "name='java.exe'" call terminate
-                    """
-                }
-            }
-        }
-
         stage('Copy JAR to Deploy Directory') {
             steps {
                 script {
