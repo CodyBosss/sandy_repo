@@ -18,7 +18,7 @@ pipeline {
         stage('Copy JAR to Deploy Directory') {
             steps {
                 script {
-                    bat "copy target\\${JAR_NAME} ${DEPLOY_DIR}\\${JAR_NAME} /Y"
+                    bat "copy target\\${JAR_NAME} \"${DEPLOY_DIR}\\${JAR_NAME}\" /Y"
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Start Application') {
             steps {
                 script {
-                    bat "start cmd /c java -jar ${DEPLOY_DIR}\\${JAR_NAME} > ${DEPLOY_DIR}\\app.log 2>&1"
+                    bat "start cmd /c java -jar \"${DEPLOY_DIR}\\${JAR_NAME}\" > \"${DEPLOY_DIR}\\app.log\" 2>&1"
                 }
             }
         }
