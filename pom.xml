@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.codyboss</groupId>
-	<artifactId>teseapp</artifactId>
+	<artifactId>newwebapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -35,7 +35,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>teseapp</finalName>
+		<finalName>newwebapp</finalName>
 		<plugins>
 			<!-- Spring Boot Maven Plugin (For Executable JAR) -->
 			<plugin>
