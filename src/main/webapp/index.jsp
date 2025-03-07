@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <h2>Hello World..This is from my side</h2>
+    <h2>Hello World..My name is Sudhir Khandare and currently looking for the DevOps Engineer role.</h2>
     <h3>Please click on the button below to fill the registration form:</h3>
 
     <a href="register.jsp">
