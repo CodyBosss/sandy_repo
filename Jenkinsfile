@@ -19,7 +19,7 @@ pipeline {
         stage('Copy JAR to Deploy Directory') {
             steps {
                 script {
-                    bat "copy target\\${JAR_NAME} ${DEPLOY_DIR}\\${JAR_NAME} /Y"
+                    bat "copy target\\${JAR_NAME} \"${DEPLOY_DIR}\\${JAR_NAME}\" /Y"
                 }
             }
         }
@@ -28,7 +28,10 @@ pipeline {
             steps {
                 script {
                     // Start the application in the background
-                    bat "start cmd /c java -jar ${DEPLOY_DIR}\\${JAR_NAME} --server.port=${APP_PORT} > ${DEPLOY_DIR}\\app.log 2>&1"
+                    bat """
+                    cd /d "${DEPLOY_DIR}"
+                    start "" java -jar "${JAR_NAME}" --server.port=${APP_PORT} > app.log 2>&1
+                    """
                 }
             }
         }
@@ -36,11 +39,11 @@ pipeline {
 
     post {
         success {
-            echo "Spring Boot application deployed successfully!"
-            echo "Open in browser: http://localhost:${APP_PORT}"
+            echo "✅ Spring Boot application deployed successfully!"
+            echo "🌐 Open in browser: http://localhost:${APP_PORT}"
         }
         failure {
-            echo "Pipeline failed!"
+            echo "❌ Pipeline failed!"
         }
     }
 }
